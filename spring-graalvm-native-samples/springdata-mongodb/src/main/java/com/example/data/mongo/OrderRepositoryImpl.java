@@ -20,6 +20,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.*;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.stereotype.Component;
 
 /**
  * The manual implementation parts for {@link OrderRepository}. This will automatically be picked up by the Spring Data

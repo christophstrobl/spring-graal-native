@@ -28,7 +28,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author Oliver Gierke
  * @author Christoph Strobl
  */
-public interface OrderRepository extends CrudRepository<Order, String>, OrderRepositoryCustom {
+public interface OrderRepository extends CrudRepository<Order, String> { //}, OrderRepositoryCustom {
 
 	@Aggregation("{ $group : { _id : $customerId, total : { $sum : 1 } } }")
 	List<OrdersPerCustomer> totalOrdersPerCustomer(Sort sort);

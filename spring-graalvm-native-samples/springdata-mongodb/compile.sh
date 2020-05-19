@@ -30,14 +30,15 @@ echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
   --verbose \
   --no-server \
   --no-fallback \
-  --initialize-at-build-time \
   -H:Name=$ARTIFACT \
   -H:+ReportExceptionStackTraces \
   -H:+TraceClassInitialization \
-  -Dspring.graal.remove-unused-autoconfig=true \
-  -Dspring.graal.remove-yaml-support=true \
-  -Dspring.graal.remove-jmx-support=true \
-  -Dspring.graal.remove-spel-support=true \
+  -H:+PrintAnalysisCallTree \
+  -Dspring.native.verbose=true \
+  -Dspring.native.remove-unused-autoconfig=true \
+  -Dspring.native.remove-yaml-support=true \
+  -Dspring.native.remove-jmx-support=true \
+  -Dspring.native.remove-spel-support=true \
   -Ddebug=true \
   -cp $CP $MAINCLASS >> output.txt ; } 2>> output.txt
 

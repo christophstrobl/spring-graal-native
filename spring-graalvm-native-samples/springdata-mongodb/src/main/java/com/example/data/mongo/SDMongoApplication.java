@@ -46,8 +46,8 @@ public class SDMongoApplication {
 					addItem(product1).addItem(product2).addItem(product3);
 			order = repository.save(order);
 
-			Invoice invoice = repository.getInvoiceFor(order);
-			System.out.println("invoice: " + invoice);
+//			Invoice invoice = repository.getInvoiceFor(order);
+//			System.out.println("invoice: " + invoice);
 
 //			assertThat(invoice).isNotNull();
 //			assertThat(invoice.getOrderId()).isEqualTo(order.getId());
