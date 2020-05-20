@@ -19,6 +19,13 @@
   "allPublicMethods":true
 },
 {
+  "name":"com.example.data.mongo.OrdersPerCustomer",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allPublicMethods":true,
+  "allDeclaredConstructors":true
+},
+{
   "name":"com.example.data.mongo.SDMongoApplication",
   "methods":[{"name":"main","parameterTypes":["java.lang.String[]"] }]
 },
@@ -53,6 +60,9 @@
 {
   "name":"java.lang.Object",
   "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.String[]"
 },
 {
   "name":"java.lang.Throwable",
@@ -182,11 +192,19 @@
   "allDeclaredMethods":true
 },
 {
+  "name":"org.springframework.data.annotation.Id",
+  "allDeclaredMethods":true
+},
+{
   "name":"org.springframework.data.annotation.PersistenceConstructor",
   "allDeclaredMethods":true
 },
 {
   "name":"org.springframework.data.annotation.Persistent",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.annotation.QueryAnnotation",
   "allDeclaredMethods":true
 },
 {
@@ -242,8 +260,9 @@
   "name":"org.springframework.data.mapping.context.MappingContext",
   "allPublicMethods":true,
   "methods":[
-    {"name":"getPersistentEntity","parameterTypes":["java.lang.Class"] }, 
-    {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.mapping.PersistentProperty"] }
+    {"name":"getPersistentEntity","parameterTypes":["java.lang.Class"] },
+    {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.mapping.PersistentProperty"] }, 
+    {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.util.TypeInformation"] }
   ]
 },
 {
@@ -371,6 +390,10 @@
 },
 {
   "name":"org.springframework.data.mongodb.core.mapping.event.BeforeSaveCallback",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.repository.Aggregation",
   "allDeclaredMethods":true
 },
 {

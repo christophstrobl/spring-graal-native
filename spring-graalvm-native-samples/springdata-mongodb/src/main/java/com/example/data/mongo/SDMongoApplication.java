@@ -87,14 +87,15 @@ public class SDMongoApplication {
 			repository.save(new Order("b12", new Date()).addItem(product1));
 			repository.save(new Order("b12", new Date()).addItem(product1));
 
-//			List<OrdersPerCustomer> result = repository.totalOrdersPerCustomer(Sort.by(Sort.Order.desc("total")));
-//			System.out.println("result: " + result);
+			List<OrdersPerCustomer> result = repository.totalOrdersPerCustomer(Sort.by(Sort.Order.desc("total")));
+			System.out.println("result: " + result);
 
 			Iterable<Order> all = repository.findAll();
 			all.forEach(System.out::println);
 
 //			assertThat(result).containsExactly(new OrdersPerCustomer("c42", 3L), new OrdersPerCustomer("b12", 2L));
 		}
+		Thread.currentThread().join();
 	}
 
 	@Configuration(proxyBeanMethods = false)

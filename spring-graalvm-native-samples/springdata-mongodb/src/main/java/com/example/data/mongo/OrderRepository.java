@@ -30,9 +30,9 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface OrderRepository extends CrudRepository<Order, String> { //}, OrderRepositoryCustom {
 
-//	@Aggregation("{ $group : { _id : $customerId, total : { $sum : 1 } } }")
-//	List<OrdersPerCustomer> totalOrdersPerCustomer(Sort sort);
-//
-//	@Aggregation(pipeline = { "{ $match : { customerId : ?0 } }", "{ $count : total }" })
-//	Long totalOrdersForCustomer(String customerId);
+	@Aggregation("{ $group : { _id : $customerId, total : { $sum : 1 } } }")
+	List<OrdersPerCustomer> totalOrdersPerCustomer(Sort sort);
+
+	@Aggregation(pipeline = { "{ $match : { customerId : ?0 } }", "{ $count : total }" })
+	Long totalOrdersForCustomer(String customerId);
 }
