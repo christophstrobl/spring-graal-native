@@ -1,38 +1,439 @@
 [
-  {
-    "name" : "org.springframework.data.mongodb.core.convert.MongoCustomConversions.MongoConverterConfigurationAdapter",
-    "allDeclaredConstructors" : true,
-    "allPublicConstructors" : true,
-    "allDeclaredMethods" : true,
-    "allPublicMethods" : true,
-    "allDeclaredClasses" : true,
-    "allPublicClasses" : true
-  },
-  {
-    "name" : "org.springframework.data.mongodb.repository.support.SimpleMongoRepository",
-    "allDeclaredConstructors" : true,
-    "allPublicConstructors" : true,
-    "allDeclaredMethods" : true,
-    "allPublicMethods" : true,
-    "allDeclaredClasses" : true,
-    "allPublicClasses" : true
-  },
-  {
-    "name": "org.springframework.data.repository.query.RepositoryQuery",
-    "allDeclaredMethods" : true,
-    "allPublicMethods" : true,
-    "allDeclaredClasses" : true,
-    "allPublicClasses" : true
-  },
-  {
-    "name" : "org.springframework.data.mongodb.repository.support.SimpleMongoRepository",
-    "allDeclaredConstructors" : true,
-    "allPublicConstructors" : true,
-    "allDeclaredMethods" : true,
-    "allPublicMethods" : true,
-    "allDeclaredClasses" : true,
-    "allPublicClasses" : true
-  }
-
-
+{
+  "name":"com.example.data.mongo.LineItem",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allPublicMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"com.example.data.mongo.LineItem_Accessor_8xumht",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.example.data.mongo.LineItem_Instantiator_8xumht",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.example.data.mongo.Order",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allPublicMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"com.example.data.mongo.OrderRepository",
+  "allDeclaredMethods":true,
+  "allPublicMethods":true
+},
+{
+  "name":"com.example.data.mongo.Order_Accessor_1of13v",
+  "allPublicConstructors":true
+},
+{
+  "name":"com.example.data.mongo.Order_Instantiator_1of13v",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.example.data.mongo.SDMongoApplication",
+  "methods":[{"name":"main","parameterTypes":["java.lang.String[]"] }]
+},
+{
+  "name":"com.example.data.mongo.SDMongoApplication$Config",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"com.mongodb.MongoClientSettings"
+},
+{
+  "name":"com.mongodb.MongoClientSettings$Builder"
+},
+{
+  "name":"com.mongodb.WriteConcern",
+  "allPublicFields":true
+},
+{
+  "name":"java.io.Closeable",
+  "allPublicMethods":true
+},
+{
+  "name":"java.lang.ClassLoader",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Long",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Object",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.Throwable",
+  "allDeclaredFields":true
+},
+{
+  "name":"java.lang.annotation.Documented",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.annotation.Retention",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.annotation.Target",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.math.BigInteger",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.net.URLClassLoader",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.security.SecureClassLoader",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.time.Instant"
+},
+{
+  "name":"java.time.LocalDateTime"
+},
+{
+  "name":"java.util.Date",
+  "allDeclaredMethods":true
+},
+{
+  "name":"javax.annotation.ManagedBean"
+},
+{
+  "name":"javax.annotation.Resource"
+},
+{
+  "name":"javax.xml.ws.WebServiceRef"
+},
+{
+  "name":"org.apache.logging.log4j.spi.ExtendedLogger"
+},
+{
+  "name":"org.apache.logging.slf4j.SLF4JProvider"
+},
+{
+  "name":"org.bson.types.ObjectId",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.slf4j.Logger"
+},
+{
+  "name":"org.slf4j.spi.LocationAwareLogger"
+},
+{
+  "name":"org.springframework.aop.framework.Advised",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.beans.ExtendedBeanInfoFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.beans.factory.DisposableBean",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.beans.factory.InitializingBean",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.boot.loader.LaunchedURLClassLoader",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.context.ApplicationContextAware",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.context.ApplicationEventPublisherAware",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.context.annotation.Bean",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.context.annotation.CommonAnnotationBeanPostProcessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.context.annotation.Configuration",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.context.annotation.ConfigurationClassPostProcessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.context.event.DefaultEventListenerFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.context.event.EventListenerMethodProcessor",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.core.DecoratingProxy",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.core.annotation.AliasFor",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.annotation.PersistenceConstructor",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.annotation.Persistent",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.convert.CustomConversions",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"getCustomWriteTarget","parameterTypes":["java.lang.Class"] }, 
+    {"name":"getCustomWriteTarget","parameterTypes":["java.lang.Class","java.lang.Class"] }, 
+    {"name":"getSimpleTypeHolder","parameterTypes":[] }, 
+    {"name":"hasCustomReadTarget","parameterTypes":["java.lang.Class","java.lang.Class"] }, 
+    {"name":"hasCustomWriteTarget","parameterTypes":["java.lang.Class"] }, 
+    {"name":"hasCustomWriteTarget","parameterTypes":["java.lang.Class","java.lang.Class"] }, 
+    {"name":"isSimpleType","parameterTypes":["java.lang.Class"] }, 
+    {"name":"registerConvertersIn","parameterTypes":["org.springframework.core.convert.converter.ConverterRegistry"] }
+  ]
+},
+{
+  "name":"org.springframework.data.convert.EntityReader",
+  "methods":[{"name":"read","parameterTypes":["java.lang.Class","java.lang.Object"] }]
+},
+{
+  "name":"org.springframework.data.mapping.PersistentPropertyAccessor"
+},
+{
+  "name":"org.springframework.data.mapping.callback.EntityCallback",
+  "allDeclaredMethods":true,
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.data.mapping.context.AbstractMappingContext",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"afterPropertiesSet","parameterTypes":[] }, 
+    {"name":"findPersistentPropertyPaths","parameterTypes":["java.lang.Class","java.util.function.Predicate"] }, 
+    {"name":"getManagedTypes","parameterTypes":[] }, 
+    {"name":"getPersistentEntities","parameterTypes":[] }, 
+    {"name":"getPersistentEntity","parameterTypes":["java.lang.Class"] }, 
+    {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.mapping.PersistentProperty"] }, 
+    {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.util.TypeInformation"] }, 
+    {"name":"getPersistentPropertyPath","parameterTypes":["java.lang.String","java.lang.Class"] }, 
+    {"name":"getPersistentPropertyPath","parameterTypes":["org.springframework.data.mapping.PropertyPath"] }, 
+    {"name":"hasPersistentEntityFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"initialize","parameterTypes":[] }, 
+    {"name":"setApplicationEventPublisher","parameterTypes":["org.springframework.context.ApplicationEventPublisher"] }, 
+    {"name":"setInitialEntitySet","parameterTypes":["java.util.Set"] }, 
+    {"name":"setSimpleTypeHolder","parameterTypes":["org.springframework.data.mapping.model.SimpleTypeHolder"] }, 
+    {"name":"setStrict","parameterTypes":["boolean"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mapping.context.MappingContext",
+  "allPublicMethods":true,
+  "methods":[
+    {"name":"getPersistentEntity","parameterTypes":["java.lang.Class"] }, 
+    {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.mapping.PersistentProperty"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mapping.model.ClassGeneratingEntityInstantiator$ObjectInstantiator"
+},
+{
+  "name":"org.springframework.data.mongodb.CodecRegistryProvider",
+  "methods":[
+    {"name":"getCodecFor","parameterTypes":["java.lang.Class"] }, 
+    {"name":"hasCodecFor","parameterTypes":["java.lang.Class"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mongodb.MongoDatabaseFactory",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.config.AbstractMongoClientConfiguration",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"mappingMongoConverter","parameterTypes":["org.springframework.data.mongodb.MongoDatabaseFactory","org.springframework.data.mongodb.core.convert.MongoCustomConversions","org.springframework.data.mongodb.core.mapping.MongoMappingContext"] }, 
+    {"name":"mongoClient","parameterTypes":[] }, 
+    {"name":"mongoDbFactory","parameterTypes":[] }, 
+    {"name":"mongoTemplate","parameterTypes":["org.springframework.data.mongodb.MongoDatabaseFactory","org.springframework.data.mongodb.core.convert.MappingMongoConverter"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mongodb.config.MongoConfigurationSupport",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"customConversions","parameterTypes":[] }, 
+    {"name":"mongoMappingContext","parameterTypes":["org.springframework.data.mongodb.core.convert.MongoCustomConversions"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mongodb.core.MongoDatabaseFactorySupport",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"destroy","parameterTypes":[] }, 
+    {"name":"getExceptionTranslator","parameterTypes":[] }, 
+    {"name":"getMongoDatabase","parameterTypes":[] }, 
+    {"name":"getMongoDatabase","parameterTypes":["java.lang.String"] }, 
+    {"name":"setWriteConcern","parameterTypes":["com.mongodb.WriteConcern"] }, 
+    {"name":"withSession","parameterTypes":["com.mongodb.client.ClientSession"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mongodb.core.MongoOperations",
+  "allPublicMethods":true,
+  "methods":[{"name":"withSession","parameterTypes":["com.mongodb.client.ClientSession"] }]
+},
+{
+  "name":"org.springframework.data.mongodb.core.MongoTemplate",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.convert.AbstractMongoConverter",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"afterPropertiesSet","parameterTypes":[] }, 
+    {"name":"getConversionService","parameterTypes":[] }, 
+    {"name":"setCustomConversions","parameterTypes":["org.springframework.data.convert.CustomConversions"] }, 
+    {"name":"setInstantiators","parameterTypes":["org.springframework.data.mapping.model.EntityInstantiators"] }
+  ]
+},
+{
+  "name":"org.springframework.data.mongodb.core.convert.MappingMongoConverter",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.convert.MongoConverter",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.convert.MongoCustomConversions",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.convert.MongoCustomConversions$MongoConverterConfigurationAdapter"
+},
+{
+  "name":"org.springframework.data.mongodb.core.convert.MongoWriter",
+  "methods":[{"name":"convertToMongoType","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"org.springframework.data.mongodb.core.index.IndexOperationsProvider",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.Document",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.Field",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.MongoMappingContext",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "methods":[{"name":"setApplicationContext","parameterTypes":["org.springframework.context.ApplicationContext"] }]
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.event.AfterConvertCallback",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.event.AfterSaveCallback",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.event.BeforeConvertCallback",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.core.mapping.event.BeforeSaveCallback",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.repository.MongoRepository",
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.data.mongodb.repository.support.SimpleMongoRepository",
+  "allDeclaredMethods":true,
+  "allPublicMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"org.springframework.data.repository.CrudRepository",
+  "allDeclaredMethods":true,
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.data.repository.Repository",
+  "allDeclaredMethods":true,
+  "allPublicMethods":true
+},
+{
+  "name":"org.springframework.lang.NonNullApi"
+},
+{
+  "name":"org.springframework.lang.Nullable"
+},
+{
+  "name":"org.springframework.stereotype.Component",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.stereotype.Indexed",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.transaction.interceptor.TransactionalProxy",
+  "allDeclaredMethods":true
+},
+{
+  "name":"org.springframework.util.Assert"
+},
+{
+  "name":"org.springframework.util.ConcurrentReferenceHashMap$Segment[]"
+}
 ]

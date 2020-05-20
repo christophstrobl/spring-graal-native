@@ -1,9 +1,14 @@
 {
-  "bundles": [
-
+  "resources":[
+    {"pattern":"\\QMETA-INF/services/jdk.vm.ci.hotspot.HotSpotJVMCIBackendFactory\\E"}, 
+    {"pattern":"\\QMETA-INF/services/jdk.vm.ci.services.JVMCIServiceLocator\\E"}, 
+    {"pattern":"\\QMETA-INF/spring.components\\E"}, 
+    {"pattern":"\\QMETA-INF/spring.factories\\E"}, 
+    {"pattern":"\\Qcom/example/data/mongo/\\E"}, 
+    {"pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"}, 
+    {"pattern":"\\Qorg/springframework/data/mongodb/config/AbstractMongoClientConfiguration.class\\E"}, 
+    {"pattern":"\\Qorg/springframework/data/mongodb/config/MongoConfigurationSupport.class\\E"}, 
+    {"pattern":"\\Qsun/text/resources/unorm.icu\\E"}
   ],
-  "resources": [
-    {"pattern": "org/springframework/data/mongodb/config/MongoConfigurationSupport.class"},
-    {"pattern": "org/springframework/data/mongodb/core/convert/MongoCustomConversions$MongoConverterConfigurationAdapter.class"}
-  ]
+  "bundles":[]
 }
