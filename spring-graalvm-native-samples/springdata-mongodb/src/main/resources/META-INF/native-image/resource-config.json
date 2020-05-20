@@ -1,0 +1,9 @@
+{
+  "bundles": [
+
+  ],
+  "resources": [
+    {"pattern": "org/springframework/data/mongodb/config/MongoConfigurationSupport.class"},
+    {"pattern": "org/springframework/data/mongodb/core/convert/MongoCustomConversions$MongoConverterConfigurationAdapter.class"}
+  ]
+}

@@ -19,14 +19,21 @@ package com.example.data.mongo;
 import java.util.Date;
 import java.util.List;
 
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings.Builder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.mongodb.repository.support.MongoRepositoryFactory;
 
-@EnableMongoRepositories
-@SpringBootApplication(proxyBeanMethods = false)
+//@SpringBootApplication(proxyBeanMethods = false)
 public class SDMongoApplication {
 
 	private final static LineItem product1 = new LineItem("p1", 1.23);
@@ -35,9 +42,22 @@ public class SDMongoApplication {
 
 	public static void main(String[] args) throws Exception {
 
-		ConfigurableApplicationContext ctx = SpringApplication.run(SDMongoApplication.class, args);
 
-		OrderRepository repository = ctx.getBean(OrderRepository.class);
+
+//		ConfigurableApplicationContext ctx = SpringApplication.run(SDMongoApplication.class, args);
+
+		ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
+//		ctx.refresh();
+
+		MongoTemplate template = ctx.getBean("mongoTemplate", MongoTemplate.class);
+
+		MongoRepositoryFactory factory = new MongoRepositoryFactory(template);
+		factory.getRepository(OrderRepository.class);
+
+//		OrderRepository repository = ctx.getBean(OrderRepository.class);
+
+		OrderRepository repository = factory.getRepository(OrderRepository.class);
+
 
 		{
 			repository.deleteAll();
@@ -71,6 +91,20 @@ public class SDMongoApplication {
 			System.out.println("result: " + result);
 
 //			assertThat(result).containsExactly(new OrdersPerCustomer("c42", 3L), new OrdersPerCustomer("b12", 2L));
+		}
+	}
+
+	@Configuration(proxyBeanMethods = false)
+	static class Config extends AbstractMongoClientConfiguration {
+
+		@Override
+		protected String getDatabaseName() {
+			return "test";
+		}
+
+		@Override
+		protected void configureClientSettings(Builder builder) {
+			builder.applyConnectionString(new ConnectionString("mongodb://host.docker.internal:27017"));
 		}
 	}
 }

@@ -34,6 +34,8 @@ echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
   -H:+ReportExceptionStackTraces \
   -H:+TraceClassInitialization \
   -H:+PrintAnalysisCallTree \
+  --initialize-at-build-time=org.springframework.data.mongodb.core.MongoTemplate \
+  --initialize-at-build-time=org.springframework.data.mongodb.repository.support.SimpleMongoRepository \
   -Dspring.native.verbose=true \
   -Dspring.native.remove-unused-autoconfig=true \
   -Dspring.native.remove-yaml-support=true \
