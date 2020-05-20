@@ -7,14 +7,6 @@
   "allDeclaredConstructors":true
 },
 {
-  "name":"com.example.data.mongo.LineItem_Accessor_8xumht",
-  "allPublicConstructors":true
-},
-{
-  "name":"com.example.data.mongo.LineItem_Instantiator_8xumht",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"com.example.data.mongo.Order",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
@@ -25,14 +17,6 @@
   "name":"com.example.data.mongo.OrderRepository",
   "allDeclaredMethods":true,
   "allPublicMethods":true
-},
-{
-  "name":"com.example.data.mongo.Order_Accessor_1of13v",
-  "allPublicConstructors":true
-},
-{
-  "name":"com.example.data.mongo.Order_Instantiator_1of13v",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"com.example.data.mongo.SDMongoApplication",
@@ -261,9 +245,6 @@
     {"name":"getPersistentEntity","parameterTypes":["java.lang.Class"] }, 
     {"name":"getPersistentEntity","parameterTypes":["org.springframework.data.mapping.PersistentProperty"] }
   ]
-},
-{
-  "name":"org.springframework.data.mapping.model.ClassGeneratingEntityInstantiator$ObjectInstantiator"
 },
 {
   "name":"org.springframework.data.mongodb.CodecRegistryProvider",
