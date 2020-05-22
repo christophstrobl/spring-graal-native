@@ -17,6 +17,9 @@ package com.example.data.mongo;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.Query;
@@ -32,6 +35,12 @@ import org.springframework.data.repository.CrudRepository;
 public interface OrderRepository extends CrudRepository<Order, String>, OrderRepositoryCustom {
 
 	List<Order> findByCustomerId(String customerId);
+
+	List<Order> findBy(Sort sort);
+
+	Page<Order> findByCustomerId(String customerId, Pageable pageable);
+
+	Slice<Order> findSliceByCustomerId(String customerId, Pageable pageable);
 
 	@Query("{ 'customerId' : '?0'}")
 	List<Order> findByCustomerViaAnnotation(String customer);

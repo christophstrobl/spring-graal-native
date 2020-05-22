@@ -24,6 +24,9 @@ import com.mongodb.MongoClientSettings.Builder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -63,6 +66,34 @@ public class SDMongoApplication {
 			System.out.println("-----------------\n\n\n");
 		}
 
+		{
+			System.out.println("---- Paging / Sorting ----");
+			repository.deleteAll();
+
+			repository.save(new Order("c42", new Date()).addItem(product1));
+			repository.save(new Order("c42", new Date()).addItem(product2));
+			repository.save(new Order("c42", new Date()).addItem(product3));
+
+			repository.save(new Order("b12", new Date()).addItem(product1));
+			repository.save(new Order("b12", new Date()).addItem(product1));
+
+			// sort
+			List<Order> sortedByCustomer = repository.findBy(Sort.by("customerId"));
+			System.out.println("sortedByCustomer: " + sortedByCustomer);
+
+			// page
+			Page<Order> c42_page0 = repository.findByCustomerId("c42", PageRequest.of(0, 2));
+			System.out.println("c42_page0: " + c42_page0);
+			Page<Order> c42_page1 = repository.findByCustomerId("c42", c42_page0.nextPageable());
+			System.out.println("c42_page1: " + c42_page1);
+
+			// slice
+			Slice<Order> c42_slice0 = repository.findSliceByCustomerId("c42", PageRequest.of(0, 2));
+			System.out.println("c42_slice0: " + c42_slice0);
+
+			System.out.println("-----------------\n\n\n");
+		}
+
 		// Part Tree Query
 		{
 			System.out.println("---- PART TREE QUERY ----");
@@ -96,8 +127,6 @@ public class SDMongoApplication {
 		// Annotated Aggregations
 		{
 			System.out.println("---- ANNOTATED AGGREGATIONS ----");
-			repository.deleteAll();
-
 			repository.deleteAll();
 
 			repository.save(new Order("c42", new Date()).addItem(product1));
