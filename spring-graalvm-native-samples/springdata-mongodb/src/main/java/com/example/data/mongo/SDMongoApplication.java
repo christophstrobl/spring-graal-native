@@ -21,17 +21,14 @@ import java.util.List;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings.Builder;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.mongodb.repository.support.MongoRepositoryFactory;
+import org.springframework.data.repository.core.support.RepositoryComposition.RepositoryFragments;
 
 //@SpringBootApplication(proxyBeanMethods = false)
 public class SDMongoApplication {
@@ -45,39 +42,62 @@ public class SDMongoApplication {
 		ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
 		MongoTemplate template = ctx.getBean("mongoTemplate", MongoTemplate.class);
 
+		System.out.println("\n\n\n---- INT REPO ----");
 		MongoRepositoryFactory factory = new MongoRepositoryFactory(template);
-		OrderRepository repository = factory.getRepository(OrderRepository.class);
+		OrderRepository repository = factory.getRepository(OrderRepository.class, RepositoryFragments.just(new OrderRepositoryImpl(template)));
+		System.out.println("-----------------\n\n\n");
 
-
-
-
-//		ConfigurableApplicationContext ctx = SpringApplication.run(SDMongoApplication.class, args);
-//		OrderRepository repository = ctx.getBean(OrderRepository.class);
-
-//		ctx.refresh();
-
-
-
-
+		// Basic save find via repository
 		{
+			System.out.println("---- FIND ALL ----");
+
 			repository.deleteAll();
 
 			Order order = new Order("c42", new Date()).//
 					addItem(product1).addItem(product2).addItem(product3);
-			order = repository.save(order);
+			repository.save(order);
 
-//			Invoice invoice = repository.getInvoiceFor(order);
-//			System.out.println("invoice: " + invoice);
+			Iterable<Order> all = repository.findAll();
+			all.forEach(System.out::println);
 
-//			assertThat(invoice).isNotNull();
-//			assertThat(invoice.getOrderId()).isEqualTo(order.getId());
-//			assertThat(invoice.getNetAmount()).isCloseTo(8.3D, offset(0.00001));
-//			assertThat(invoice.getTaxAmount()).isCloseTo(1.577D, offset(0.00001));
-//			assertThat(invoice.getTotalAmount()).isCloseTo(9.877, offset(0.00001));
-
+			System.out.println("-----------------\n\n\n");
 		}
 
+		// Part Tree Query
 		{
+			System.out.println("---- PART TREE QUERY ----");
+			repository.deleteAll();
+
+			Order order = new Order("c42", new Date()).//
+					addItem(product1).addItem(product2).addItem(product3);
+			repository.save(order);
+
+			List<Order> byCustomerId = repository.findByCustomerId(order.getCustomerId());
+			byCustomerId.forEach(System.out::println);
+
+			System.out.println("-----------------\n\n\n");
+		}
+
+		// Annotated Query
+		{
+			System.out.println("---- ANNOTATED QUERY ----");
+			repository.deleteAll();
+
+			Order order = new Order("c42", new Date()).//
+					addItem(product1).addItem(product2).addItem(product3);
+			repository.save(order);
+
+			List<Order> byCustomerId = repository.findByCustomerViaAnnotation(order.getCustomerId());
+			byCustomerId.forEach(System.out::println);
+
+			System.out.println("-----------------\n\n\n");
+		}
+
+		// Annotated Aggregations
+		{
+			System.out.println("---- ANNOTATED AGGREGATIONS ----");
+			repository.deleteAll();
+
 			repository.deleteAll();
 
 			repository.save(new Order("c42", new Date()).addItem(product1));
@@ -90,12 +110,26 @@ public class SDMongoApplication {
 			List<OrdersPerCustomer> result = repository.totalOrdersPerCustomer(Sort.by(Sort.Order.desc("total")));
 			System.out.println("result: " + result);
 
-			Iterable<Order> all = repository.findAll();
-			all.forEach(System.out::println);
-
 //			assertThat(result).containsExactly(new OrdersPerCustomer("c42", 3L), new OrdersPerCustomer("b12", 2L));
+			System.out.println("-----------------\n\n\n");
 		}
-		Thread.currentThread().join();
+
+		// Custom Implementation
+		{
+			System.out.println("---- CUSTOM IMPLEMENTATION ----");
+			repository.deleteAll();
+
+			Order order = new Order("c42", new Date()).//
+					addItem(product1).addItem(product2).addItem(product3);
+			order = repository.save(order);
+
+			Invoice invoice = repository.getInvoiceFor(order);
+			System.out.println("invoice: " + invoice);
+
+			System.out.println("-----------------\n\n\n");
+		}
+
+		//	Thread.currentThread().join();
 	}
 
 	@Configuration(proxyBeanMethods = false)

@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.Aggregation;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -28,7 +29,12 @@ import org.springframework.data.repository.CrudRepository;
  * @author Oliver Gierke
  * @author Christoph Strobl
  */
-public interface OrderRepository extends CrudRepository<Order, String> { //}, OrderRepositoryCustom {
+public interface OrderRepository extends CrudRepository<Order, String>, OrderRepositoryCustom {
+
+	List<Order> findByCustomerId(String customerId);
+
+	@Query("{ 'customerId' : '?0'}")
+	List<Order> findByCustomerViaAnnotation(String customer);
 
 	@Aggregation("{ $group : { _id : $customerId, total : { $sum : 1 } } }")
 	List<OrdersPerCustomer> totalOrdersPerCustomer(Sort sort);
