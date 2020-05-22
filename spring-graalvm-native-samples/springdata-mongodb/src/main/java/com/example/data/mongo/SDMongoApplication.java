@@ -129,6 +129,20 @@ public class SDMongoApplication {
 			System.out.println("-----------------\n\n\n");
 		}
 
+		// Result Projection
+		{
+			System.out.println("---- RESULT PROJECTION ----");
+			repository.deleteAll();
+
+			Order order = new Order("c42", new Date()).//
+					addItem(product1).addItem(product2).addItem(product3);
+			repository.save(order);
+
+			List<OrderProjection> result =  repository.findOrderProjectionByCustomerId(order.getCustomerId());
+			result.forEach(it -> System.out.println(String.format("OrderProjection(%s){id=%s, customerId=%s}", it.getClass().getSimpleName(), it.getId(), it.getCustomerId())));
+			System.out.println("-----------------\n\n\n");
+		}
+
 		//	Thread.currentThread().join();
 	}
 

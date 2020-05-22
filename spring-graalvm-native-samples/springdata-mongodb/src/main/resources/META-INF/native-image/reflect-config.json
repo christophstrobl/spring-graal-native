@@ -21,6 +21,13 @@
   "allDeclaredConstructors":true
 },
 {
+  "name":"com.example.data.mongo.OrderProjection",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allPublicMethods":true,
+  "allDeclaredConstructors":true
+},
+{
   "name":"com.example.data.mongo.OrderRepository",
   "allDeclaredMethods":true,
   "allPublicMethods":true
@@ -102,6 +109,14 @@
   "allDeclaredMethods":true
 },
 {
+  "name":"java.lang.invoke.MethodHandles",
+  "allDeclaredMethods":true
+},
+{
+  "name":"java.lang.invoke.MethodHandles$Lookup",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Class"] }]
+},
+{
   "name":"java.math.BigInteger",
   "allDeclaredMethods":true
 },
@@ -118,6 +133,10 @@
 },
 {
   "name":"java.time.LocalDateTime"
+},
+{
+  "name":"java.util.ArrayList",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"java.util.Date",
@@ -147,6 +166,10 @@
 },
 {
   "name":"org.slf4j.spi.LocationAwareLogger"
+},
+{
+  "name":"org.springframework.aop.SpringProxy",
+  "allDeclaredMethods":true
 },
 {
   "name":"org.springframework.aop.framework.Advised",
@@ -334,7 +357,8 @@
 },
 {
   "name":"org.springframework.data.mongodb.core.MongoOperations",
-  "allPublicMethods":true
+  "allPublicMethods":true,
+  "methods":[{"name":"withSession","parameterTypes":["com.mongodb.client.ClientSession"] }]
 },
 {
   "name":"org.springframework.data.mongodb.core.MongoTemplate",
@@ -433,6 +457,14 @@
   "allDeclaredMethods":true,
   "allPublicMethods":true,
   "allDeclaredConstructors":true
+},
+{
+  "name":"org.springframework.data.projection.TargetAware",
+  "allDeclaredMethods":true,
+  "methods":[
+    {"name":"getTarget","parameterTypes":[] }, 
+    {"name":"getTargetClass","parameterTypes":[] }
+  ]
 },
 {
   "name":"org.springframework.data.repository.CrudRepository",

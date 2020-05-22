@@ -36,6 +36,8 @@ public interface OrderRepository extends CrudRepository<Order, String>, OrderRep
 	@Query("{ 'customerId' : '?0'}")
 	List<Order> findByCustomerViaAnnotation(String customer);
 
+	List<OrderProjection> findOrderProjectionByCustomerId(String customerId);
+
 	@Aggregation("{ $group : { _id : $customerId, total : { $sum : 1 } } }")
 	List<OrdersPerCustomer> totalOrdersPerCustomer(Sort sort);
 
