@@ -144,5 +144,10 @@ public class SDMongoApplication {
 		protected void configureClientSettings(Builder builder) {
 			builder.applyConnectionString(new ConnectionString("mongodb://host.docker.internal:27017"));
 		}
+
+		@Override
+		protected boolean autoIndexCreation() {
+			return true;
+		}
 	}
 }

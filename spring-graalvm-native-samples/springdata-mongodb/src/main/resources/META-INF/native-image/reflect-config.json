@@ -383,6 +383,10 @@
   "allPublicMethods":true
 },
 {
+  "name":"org.springframework.data.mongodb.core.index.Indexed",
+  "allDeclaredMethods":true
+},
+{
   "name":"org.springframework.data.mongodb.core.mapping.Document",
   "allDeclaredMethods":true
 },

@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -28,6 +29,7 @@ public class Order {
 
 	private String id;
 
+	@Indexed
 	private String customerId;
 
 	@Field("order-date")
