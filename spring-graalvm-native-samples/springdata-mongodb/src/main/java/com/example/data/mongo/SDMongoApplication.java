@@ -32,6 +32,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.mongodb.repository.support.MongoRepositoryFactory;
 import org.springframework.data.repository.core.support.RepositoryComposition.RepositoryFragments;
 
@@ -48,8 +49,10 @@ public class SDMongoApplication {
 		MongoTemplate template = ctx.getBean("mongoTemplate", MongoTemplate.class);
 
 		System.out.println("\n\n\n---- INT REPO ----");
-		MongoRepositoryFactory factory = new MongoRepositoryFactory(template);
-		OrderRepository repository = factory.getRepository(OrderRepository.class, RepositoryFragments.just(new OrderRepositoryImpl(template)));
+//		MongoRepositoryFactory factory = new MongoRepositoryFactory(template);
+//		OrderRepository repository = factory.getRepository(OrderRepository.class, RepositoryFragments.just(new OrderRepositoryImpl(template)));
+
+		OrderRepository repository = ctx.getBean(OrderRepository.class);
 		System.out.println("-----------------\n\n\n");
 
 		// Basic save find via repository
@@ -147,17 +150,20 @@ public class SDMongoApplication {
 
 		// Custom Implementation
 		{
-			System.out.println("---- CUSTOM IMPLEMENTATION ----");
-			repository.deleteAll();
 
-			Order order = new Order("c42", new Date()).//
-					addItem(product1).addItem(product2).addItem(product3);
-			order = repository.save(order);
+			// does not work with the @enable annotation :(
 
-			Invoice invoice = repository.getInvoiceFor(order);
-			System.out.println("invoice: " + invoice);
-
-			System.out.println("-----------------\n\n\n");
+//			System.out.println("---- CUSTOM IMPLEMENTATION ----");
+//			repository.deleteAll();
+//
+//			Order order = new Order("c42", new Date()).//
+//					addItem(product1).addItem(product2).addItem(product3);
+//			order = repository.save(order);
+//
+//			Invoice invoice = repository.getInvoiceFor(order);
+//			System.out.println("invoice: " + invoice);
+//
+//			System.out.println("-----------------\n\n\n");
 		}
 
 		// Result Projection
@@ -190,10 +196,11 @@ public class SDMongoApplication {
 			System.out.println("-----------------\n\n\n");
 		}
 
-		//	Thread.currentThread().join();
+//			Thread.currentThread().join();
 	}
 
 	@Configuration(proxyBeanMethods = false)
+	@EnableMongoRepositories
 	static class Config extends AbstractMongoClientConfiguration {
 
 		@Override
