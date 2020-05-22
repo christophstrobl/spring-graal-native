@@ -477,6 +477,11 @@
   "allPublicMethods":true
 },
 {
+  "name":"org.springframework.data.repository.query.QueryByExampleExecutor",
+  "allDeclaredMethods":true,
+  "allPublicMethods":true
+},
+{
   "name":"org.springframework.lang.NonNullApi"
 },
 {

@@ -24,6 +24,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 /**
  * A repository interface assembling CRUD functionality as well as the API to invoke the methods implemented manually.
@@ -32,7 +33,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author Oliver Gierke
  * @author Christoph Strobl
  */
-public interface OrderRepository extends CrudRepository<Order, String>, OrderRepositoryCustom {
+public interface OrderRepository extends CrudRepository<Order, String>, OrderRepositoryCustom, QueryByExampleExecutor {
 
 	List<Order> findByCustomerId(String customerId);
 

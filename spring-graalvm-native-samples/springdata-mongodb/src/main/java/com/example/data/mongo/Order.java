@@ -40,6 +40,10 @@ public class Order {
 	protected Order() {
 	}
 
+	protected Order(String customerId) {
+		this(customerId, null);
+	}
+
 	@PersistenceConstructor
 	public Order(String id, String customerId, Date orderDate, List<LineItem> items) {
 

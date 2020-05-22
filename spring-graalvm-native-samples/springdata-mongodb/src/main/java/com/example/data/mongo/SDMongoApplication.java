@@ -24,6 +24,8 @@ import com.mongodb.MongoClientSettings.Builder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
@@ -167,8 +169,24 @@ public class SDMongoApplication {
 					addItem(product1).addItem(product2).addItem(product3);
 			repository.save(order);
 
-			List<OrderProjection> result =  repository.findOrderProjectionByCustomerId(order.getCustomerId());
+			List<OrderProjection> result = repository.findOrderProjectionByCustomerId(order.getCustomerId());
 			result.forEach(it -> System.out.println(String.format("OrderProjection(%s){id=%s, customerId=%s}", it.getClass().getSimpleName(), it.getId(), it.getCustomerId())));
+			System.out.println("-----------------\n\n\n");
+		}
+
+		{
+
+			System.out.println("---- QUERY BY EXAMPLE ----");
+			repository.deleteAll();
+
+			Order order1 = repository.save(new Order("c42", new Date()).addItem(product1));
+			Order order2 = repository.save(new Order("b12", new Date()).addItem(product1));
+
+			Example<Order> example = Example.of(new Order(order1.getCustomerId()), ExampleMatcher.matching().withIgnorePaths("items"));
+			Iterable<Order> result = repository.findAll(example);
+
+			System.out.println("result: " + result);
+
 			System.out.println("-----------------\n\n\n");
 		}
 
