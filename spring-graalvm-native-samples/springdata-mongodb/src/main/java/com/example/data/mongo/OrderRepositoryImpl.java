@@ -21,6 +21,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.*;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Indexed;
 
 /**
  * The manual implementation parts for {@link OrderRepository}. This will automatically be picked up by the Spring Data
@@ -30,6 +31,7 @@ import org.springframework.stereotype.Component;
  * @author Thomas Darimont
  * @author Oliver Gierke
  */
+@Indexed
 class OrderRepositoryImpl implements OrderRepositoryCustom {
 
 	private final MongoOperations operations;

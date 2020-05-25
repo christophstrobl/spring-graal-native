@@ -9,6 +9,7 @@
     {"pattern":"\\Qcom/example/data/mongo/OrderRepositoryCustom.class\\E"}, 
     {"pattern":"\\Qcom/example/data/mongo/OrderRepositoryImpl.class\\E"}, 
     {"pattern":"\\Qcom/example/data/mongo/\\E"}, 
+    {"pattern":"\\Qlogback.xml\\E"}, 
     {"pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"}, 
     {"pattern":"\\Qorg/springframework/data/mongodb/config/AbstractMongoClientConfiguration.class\\E"}, 
     {"pattern":"\\Qorg/springframework/data/mongodb/config/MongoConfigurationSupport.class\\E"}, 
