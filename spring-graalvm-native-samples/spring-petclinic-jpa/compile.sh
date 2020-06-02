@@ -12,7 +12,7 @@ rm -rf target
 mkdir -p target/native-image
 
 echo "Packaging $ARTIFACT with Maven"
-mvn -ntp package > target/native-image/output.txt
+mvn -ntp -DskipTests=true package > target/native-image/output.txt
 
 JAR="$ARTIFACT-$VERSION.jar"
 rm -f $ARTIFACT
@@ -34,6 +34,7 @@ echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
   -H:+RemoveSaturatedTypeFlows \
   -H:+TraceClassInitialization \
   -H:+ReportExceptionStackTraces \
+  -H:DeadlockWatchdogInterval=15 \
   -Dspring.native.remove-yaml-support=true \
   -Dspring.native.remove-unused-autoconfig=true \
   -Dspring.native.remove-jmx-support=true \
