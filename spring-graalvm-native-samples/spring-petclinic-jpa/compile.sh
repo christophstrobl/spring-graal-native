@@ -38,7 +38,6 @@ echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
   -Dspring.native.remove-yaml-support=true \
   -Dspring.native.remove-unused-autoconfig=true \
   -Dspring.native.remove-jmx-support=true \
-  -Dspring.native.verbose=true \
   -Ddebug=true \
   --initialize-at-build-time=javax.el.ListELResolver,javax.el.BeanELResolver,javax.el.MapELResolver,javax.el.CompositeELResolver \
   --initialize-at-build-time=org.springframework.http.converter.FormHttpMessageConverter \

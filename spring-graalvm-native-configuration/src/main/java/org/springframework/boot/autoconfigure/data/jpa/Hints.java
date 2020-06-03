@@ -21,6 +21,7 @@ import org.springframework.data.repository.core.support.PropertiesBasedNamedQuer
 import org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport;
 import org.springframework.data.repository.core.support.RepositoryFragmentsFactoryBean;
 import org.springframework.data.repository.core.support.TransactionalRepositoryFactoryBeanSupport;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.graalvm.extension.NativeImageHint;
 import org.springframework.graalvm.extension.NativeImageConfiguration;
 import org.springframework.graalvm.extension.TypeInfo;
@@ -36,7 +37,13 @@ import org.springframework.orm.jpa.SharedEntityManagerCreator;
 				JpaEvaluationContextExtension.class,
 				PropertiesBasedNamedQueries.class, // TODO what is the right trigger for this one? Basically, are there other auto configs that trigger which would need it?
 				RepositoryFragmentsFactoryBean.class, // TODO ditto
-				org.springframework.data.jpa.repository.Query.class
+				org.springframework.data.jpa.repository.Query.class,
+				org.springframework.data.jpa.repository.query.Procedure.class,
+				org.springframework.data.jpa.repository.EntityGraph.class,
+				org.springframework.data.jpa.repository.Lock.class,
+				org.springframework.data.jpa.repository.Modifying.class,
+				org.springframework.data.jpa.repository.QueryHints.class,
+				org.springframework.data.jpa.repository.Temporal.class
 		},typeNames= {
 				"org.springframework.data.jpa.repository.config.JpaMetamodelMappingContextFactoryBean",
 				"org.springframework.data.jpa.util.JpaMetamodelCacheCleanup"
