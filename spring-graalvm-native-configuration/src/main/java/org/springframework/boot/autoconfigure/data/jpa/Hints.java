@@ -35,7 +35,8 @@ import org.springframework.orm.jpa.SharedEntityManagerCreator;
 				TransactionalRepositoryFactoryBeanSupport.class,
 				JpaEvaluationContextExtension.class,
 				PropertiesBasedNamedQueries.class, // TODO what is the right trigger for this one? Basically, are there other auto configs that trigger which would need it?
-				RepositoryFragmentsFactoryBean.class // TODO ditto
+				RepositoryFragmentsFactoryBean.class, // TODO ditto
+				org.springframework.data.jpa.repository.Query.class
 		},typeNames= {
 				"org.springframework.data.jpa.repository.config.JpaMetamodelMappingContextFactoryBean",
 				"org.springframework.data.jpa.util.JpaMetamodelCacheCleanup"
