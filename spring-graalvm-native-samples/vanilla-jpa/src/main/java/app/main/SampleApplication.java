@@ -32,9 +32,9 @@ public class SampleApplication {
 		return args -> {
 			try {
 				System.err.println("****");
-				Optional<Foo> foo = entities.findById(1L);
+				Foo foo = entities.findById(1L);
 				System.err.println("****: " + foo);
-				if (!foo.isPresent()) {
+				if (foo == null) {
 					entities.save(new Foo("Hello"));
 				}
 			}
@@ -46,14 +46,30 @@ public class SampleApplication {
 
 	@Bean
 	public RouterFunction<?> userEndpoints() {
-		return route(GET("/"), request -> ok().body(
+		return route(
+				GET("/"), request -> ok().body(
 				Mono.fromCallable(this::findOne).log().subscribeOn(Schedulers.elastic()),
-				Foo.class));
+				Foo.class))
+				.and(route(
+						GET("/value"), request -> ok().body(
+								Mono.fromCallable(this::findByValue).log().onErrorReturn(new Foo("Error")).subscribeOn(Schedulers.elastic()),
+								Foo.class))
+				);
 	}
 
 	private Foo findOne() {
 		try {
-			return entities.findById(1L).get();
+			return entities.findById(1L);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	private Foo findByValue() {
+		try {
+			return entities.findByValue("Hello");
 		}
 		catch (Exception e) {
 			e.printStackTrace();

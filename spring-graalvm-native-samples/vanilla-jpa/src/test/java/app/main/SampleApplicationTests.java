@@ -49,4 +49,9 @@ public class SampleApplicationTests {
 		client.get().uri("/").exchange().expectBody(String.class).isEqualTo("{\"value\":\"Hello\"}");
 	}
 
+	@Test
+	public void test2() {
+		client.get().uri("/value").exchange().expectBody(String.class).isEqualTo("{\"value\":\"Hello\"}");
+	}
+
 }
