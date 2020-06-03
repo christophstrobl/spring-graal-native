@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2019 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package app.main.model;
+package org.springframework.data.commons;
 
-import java.util.List;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.graalvm.extension.NativeImageConfiguration;
 
 /**
- * @author Dave Syer
- *
+ * @author Christoph Strobl
+ * @since 2020/06
  */
-public interface FooRepository extends Repository<Foo, Long> {
-    Foo findById(@Param("id") Long id) throws DataAccessException;
-    Foo findByValue(String value);
-    void save(Foo owner) throws DataAccessException;
+
+public class Hints implements NativeImageConfiguration {
+
 }
