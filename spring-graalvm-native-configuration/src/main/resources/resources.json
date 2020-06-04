@@ -36,6 +36,7 @@
     {"pattern": "application.properties"},
     {"pattern": "logging.properties"},
     {"pattern": "org/springframework/http/codec/CodecConfigurer.properties"},
+    {"pattern": "org/hibernate/query/spi/QueryImplementor.class"},
     
     // vvv vanilla-jpa
     {"pattern": "META-INF/jpa-named-queries.properties"},
