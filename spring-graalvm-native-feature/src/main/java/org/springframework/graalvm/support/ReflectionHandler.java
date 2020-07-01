@@ -15,6 +15,8 @@
  */
 package org.springframework.graalvm.support;
 
+import static org.springframework.graalvm.domain.reflect.Flag.*;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -150,7 +152,7 @@ public class ReflectionHandler {
 			addAccess("org.springframework.boot.web.embedded.tomcat.TomcatEmbeddedWebappClassLoader", Flag.allDeclaredConstructors, Flag.allDeclaredMethods);
 		}
 	}
-	
+
 	public void registerAgent(DuringSetupAccess a) {
 		DuringSetupAccessImpl access = (DuringSetupAccessImpl) a;
 		RuntimeReflectionSupport rrs = ImageSingletons.lookup(RuntimeReflectionSupport.class);
@@ -347,7 +349,7 @@ public class ReflectionHandler {
 	public Class<?> addAccess(String typename, Flag...flags) {
 		return addAccess(typename, null, null, false, flags);
 	}
-	
+
 	public Class<?> addAccess(String typename, boolean silent, AccessDescriptor ad) {
 		if (ad.noMembersSpecified()) {
 			return addAccess(typename, null, null, silent, AccessBits.getFlags(ad.getAccessBits()));
@@ -443,6 +445,9 @@ public class ReflectionHandler {
 		}
 		if (checkType(type)) {
 			rra.registerType(type);
+
+			boolean allowFinalWrite = Arrays.asList(flags).contains(Flag.allowFinalWrite);
+
 			for (Flag flag : flags) {
 				try {
 					switch (flag) {
@@ -456,7 +461,19 @@ public class ReflectionHandler {
 							throw new IllegalStateException();
 						}
 						if (verify(type.getDeclaredFields())) {
-							rra.registerDeclaredFields(type);
+							if(!allowFinalWrite) {
+								rra.registerDeclaredFields(type);
+							} else {
+								for(Field field : type.getDeclaredFields()) {
+
+									System.out.println("Registering final write for : " + type +  field.getName());
+									try {
+										rra.registerField(type, field.getName(), true, false);
+									} catch (NoSuchFieldException e) {
+										e.printStackTrace();
+									}
+								}
+							}
 						}
 						break;
 					case allPublicFields:

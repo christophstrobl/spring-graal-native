@@ -4,14 +4,23 @@
   // needs this proxy - is there infrastructure that includes a mapping that we need to analyse (for auto synthannotation proxy
   // generation?). Currently the analysis is only done for app components, not library infrastructure.
   ["org.springframework.web.bind.annotation.RequestMapping", "org.springframework.core.annotation.SynthesizedAnnotation"],
-//  ["org.springframework.web.bind.annotation.RequestParam", "org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.web.bind.annotation.RequestParam", "org.springframework.core.annotation.SynthesizedAnnotation"],
 //  ["org.springframework.web.bind.annotation.RequestBody", "org.springframework.core.annotation.SynthesizedAnnotation"],
 //  ["org.springframework.web.bind.annotation.PathVariable", "org.springframework.core.annotation.SynthesizedAnnotation"],
 //  ["org.springframework.web.bind.annotation.ModelAttribute", "org.springframework.core.annotation.SynthesizedAnnotation"],
   ["org.springframework.context.annotation.Lazy","org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.web.bind.annotation.RequestBody", "org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.web.bind.annotation.PathVariable", "org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.web.bind.annotation.ModelAttribute", "org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.stereotype.Controller","org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.web.bind.annotation.ControllerAdvice","org.springframework.core.annotation.SynthesizedAnnotation"],
 
   // Spring Boot
   ["org.springframework.boot.context.properties.ConfigurationProperties", "org.springframework.core.annotation.SynthesizedAnnotation"],
+
+  // Spring Data
+  ["org.springframework.data.rest.webmvc.BasePathAwareController", "org.springframework.core.annotation.SynthesizedAnnotation"],
+  ["org.springframework.data.rest.webmvc.RepositoryRestController","org.springframework.data.rest.webmvc.BasePathAwareController", "org.springframework.core.annotation.SynthesizedAnnotation"],
 
   // Spring Security
   ["org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication", "org.springframework.core.annotation.SynthesizedAnnotation"],
