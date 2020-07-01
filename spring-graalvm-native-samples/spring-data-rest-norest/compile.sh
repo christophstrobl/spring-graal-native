@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ARTIFACT=spring-data-rest
+ARTIFACT=spring-data-rest-norest
 MAINCLASS=app.main.SampleApplication
 VERSION=0.0.1.BUILD-SNAPSHOT
 
@@ -28,7 +28,6 @@ GRAALVM_VERSION=`native-image --version`
 echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
 { time native-image \
   --verbose \
-  --initialize-at-build-time=org.springframework.hateoas.MediaTypes,org.springframework.util.MimeTypeUtils \
   -H:+RemoveSaturatedTypeFlows \
   -H:+PrintAnalysisCallTree \
   -Dspring.native.remove-yaml-support=true \
