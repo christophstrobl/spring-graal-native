@@ -318,7 +318,7 @@ public class SpringDataComponentProcessor implements ComponentProcessor {
 		log.message(String.format("Registering reflective access for %s", domainType.getDottedName()));
 
 		imageContext.addReflectiveAccess(domainType.getDottedName(), Flag.allDeclaredMethods,
-				Flag.allDeclaredConstructors, Flag.allDeclaredFields);
+				Flag.allDeclaredConstructors, Flag.allDeclaredFields, Flag.allowFinalWrite);
 
 		domainType.getAnnotations().forEach(it -> registerSpringDataAnnotation(it, imageContext));
 

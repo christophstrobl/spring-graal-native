@@ -62,5 +62,278 @@
   {
     "name":"io.netty.buffer.AbstractReferenceCountedByteBuf",
     "fields":[{"name":"refCnt", "allowUnsafeAccess":true}]
+  },
+
+
+
+
+
+
+
+  {
+    "name":"boolean",
+    "allDeclaredMethods":true
+  },
+
+  {
+    "name":"char",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JacksonAnnotation",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JsonAnyGetter",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JsonIgnore",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JsonInclude",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JsonInclude$Include"
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JsonProperty",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.annotation.JsonUnwrapped",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.core.JsonGenerator"
+  },
+  {
+    "name":"com.fasterxml.jackson.core.ObjectCodec",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.core.TreeCodec",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.core.Versioned",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.Module",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "methods":[{"name":"getDependencies","parameterTypes":[] }]
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ObjectMapper",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.deser.BeanDeserializerModifier[]"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.deser.Deserializers[]"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.deser.KeyDeserializers[]"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.deser.ValueInstantiators[]"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.module.SimpleModule",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "methods":[
+      {"name":"addAbstractTypeMapping","parameterTypes":["java.lang.Class","java.lang.Class"] },
+      {"name":"addDeserializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.JsonDeserializer"] },
+      {"name":"addKeyDeserializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.KeyDeserializer"] },
+      {"name":"addKeySerializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.JsonSerializer"] },
+      {"name":"addSerializer","parameterTypes":["com.fasterxml.jackson.databind.JsonSerializer"] },
+      {"name":"addSerializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.JsonSerializer"] },
+      {"name":"addValueInstantiator","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.deser.ValueInstantiator"] },
+      {"name":"getModuleName","parameterTypes":[] },
+      {"name":"getTypeId","parameterTypes":[] },
+      {"name":"registerSubtypes","parameterTypes":["java.util.Collection"] },
+      {"name":"registerSubtypes","parameterTypes":["com.fasterxml.jackson.databind.jsontype.NamedType[]"] },
+      {"name":"registerSubtypes","parameterTypes":["java.lang.Class[]"] },
+      {"name":"setAbstractTypes","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver"] },
+      {"name":"setDeserializerModifier","parameterTypes":["com.fasterxml.jackson.databind.deser.BeanDeserializerModifier"] },
+      {"name":"setDeserializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleDeserializers"] },
+      {"name":"setKeyDeserializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleKeyDeserializers"] },
+      {"name":"setKeySerializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleSerializers"] },
+      {"name":"setMixInAnnotation","parameterTypes":["java.lang.Class","java.lang.Class"] },
+      {"name":"setSerializerModifier","parameterTypes":["com.fasterxml.jackson.databind.ser.BeanSerializerModifier"] },
+      {"name":"setSerializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleSerializers"] },
+      {"name":"setValueInstantiators","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleValueInstantiators"] },
+      {"name":"setupModule","parameterTypes":["com.fasterxml.jackson.databind.Module$SetupContext"] },
+      {"name":"version","parameterTypes":[] }
+    ]
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ser.BeanSerializerModifier[]"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ser.Serializers[]"
+  },
+  {
+    "name":"com.fasterxml.jackson.datatype.jdk8.Jdk8Module",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"com.fasterxml.jackson.datatype.jsr310.JavaTimeModule",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"com.fasterxml.jackson.module.paramnames.ParameterNamesModule",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true
+  },
+  {
+    "name":"com.jayway.jsonpath.DocumentContext"
+  },
+
+  {
+    "name":"java.lang.AutoCloseable",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.lang.CharSequence[]"
+  },
+  {
+    "name":"java.lang.Class",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.ClassLoader",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.Class[]"
+  },
+  {
+    "name":"java.lang.Comparable[]"
+  },
+  {
+    "name":"java.lang.Iterable",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.lang.Object",
+    "allDeclaredMethods":true,
+    "methods":[
+      {"name":"equals","parameterTypes":["java.lang.Object"] },
+      {"name":"hashCode","parameterTypes":[] }
+    ]
+  },
+  {
+    "name":"java.lang.Object[]"
+  },
+  {
+    "name":"java.lang.String",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.String[]"
+  },
+  {
+    "name":"java.lang.Throwable",
+    "allDeclaredFields":true
+  },
+  {
+    "name":"java.lang.annotation.Documented",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.annotation.Inherited",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.annotation.Repeatable",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.annotation.Retention",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.annotation.Target",
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.lang.reflect.AnnotatedElement",
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.lang.reflect.GenericDeclaration",
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.lang.reflect.Method"
+  },
+
+  {
+    "name":"java.time.LocalDateTime"
+  },
+  {
+    "name":"java.util.ArrayList",
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.util.Collection",
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.util.EventListener",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.util.List",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true
+  },
+  {
+    "name":"java.util.Properties"
+  },
+  {
+    "name":"java.util.RandomAccess",
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.util.concurrent.Executor",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.util.concurrent.ThreadFactory",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+  {
+    "name":"java.util.function.Function"
+  },
+  {
+    "name":"java.util.function.Supplier",
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
   }
 ]
