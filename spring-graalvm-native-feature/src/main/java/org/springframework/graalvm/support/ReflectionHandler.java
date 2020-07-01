@@ -15,8 +15,6 @@
  */
 package org.springframework.graalvm.support;
 
-import static org.springframework.graalvm.domain.reflect.Flag.*;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -376,12 +374,8 @@ public class ReflectionHandler {
 				}
 			}
 		}
-
 		if (checkType(type)) {
 			rra.registerType(type);
-
-			boolean allowFinalWrite = Arrays.asList(flags).contains(Flag.allowFinalWrite);
-
 			for (Flag flag : flags) {
 				try {
 					switch (flag) {
@@ -392,21 +386,8 @@ public class ReflectionHandler {
 						break;
 					case allDeclaredFields:
 						if (verify(type.getDeclaredFields())) {
-							if(!allowFinalWrite) {
-								rra.registerDeclaredFields(type);
-							} else {
-								for(Field field : type.getDeclaredFields()) {
-
-									System.out.println("Registering final write for : " + type +  field.getName());
-									try {
-										rra.registerField(type, field.getName(), true, false);
-									} catch (NoSuchFieldException e) {
-										e.printStackTrace();
-									}
-								}
-							}
+							rra.registerDeclaredFields(type);
 						}
-
 						break;
 					case allPublicFields:
 						if (verify(type.getFields())) {
@@ -439,7 +420,6 @@ public class ReflectionHandler {
 						}
 						break;
 					}
-
 				} catch (NoClassDefFoundError ncdfe) {
 					SpringFeature.log("WARNING: problem handling flag: " + flag + " for " + type.getName()
 							+ " because of missing " + ncdfe.getMessage());
