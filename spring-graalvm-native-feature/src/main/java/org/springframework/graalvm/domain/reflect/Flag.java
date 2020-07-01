@@ -32,8 +32,7 @@ public enum Flag {
 	allDeclaredMethods, //
 	allPublicMethods, //
 	allDeclaredClasses, //
-	allPublicClasses,
-	allowFinalWrite;
+	allPublicClasses;
 
 	public static String toString(Flag[] flags) {
 		List<Flag> asList = Arrays.asList(flags);
