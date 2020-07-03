@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfigur
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.function.RouterFunction;
 
-@SpringBootApplication(proxyBeanMethods = false, exclude = SpringDataWebAutoConfiguration.class)
+@SpringBootApplication(proxyBeanMethods = false)
 public class SampleApplication {
 
 	private CustomerRepository repository;
