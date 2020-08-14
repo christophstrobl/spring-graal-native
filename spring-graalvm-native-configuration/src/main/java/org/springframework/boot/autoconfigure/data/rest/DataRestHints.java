@@ -15,6 +15,7 @@
  */
 package org.springframework.boot.autoconfigure.data.rest;
 
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcHints;
 import org.springframework.graalvm.extension.NativeImageConfiguration;
 import org.springframework.graalvm.extension.NativeImageHint;
 import org.springframework.graalvm.extension.TypeInfo;
@@ -26,19 +27,27 @@ import org.springframework.graalvm.type.AccessBits;
 @NativeImageHint(trigger = RepositoryRestMvcAutoConfiguration.class, typeInfos = {
 		@TypeInfo(types = {
 				org.reactivestreams.Publisher.class,
+
+				org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver.class,
+				org.springframework.web.servlet.theme.FixedThemeResolver.class,
+				org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator.class,
+				org.springframework.web.servlet.support.SessionFlashMapManager.class,
+
 				org.springframework.data.repository.core.support.RepositoryFactoryInformation.class,
 				org.springframework.data.repository.support.Repositories.class,
 				org.springframework.data.repository.support.RepositoryInvoker.class,
-				org.springframework.data.repository.support.RepositoryInvokerFactory.class
+				org.springframework.data.repository.support.RepositoryInvokerFactory.class,
 		},
 				typeNames = {
+						"org.springframework.data.rest.webmvc.config.WebMvcRepositoryRestConfiguration",
+
 						"org.springframework.hateoas.EntityModel",
 						"org.springframework.hateoas.CollectionModel",
 						"org.springframework.hateoas.AffordanceModel"
 				},
 
 				access = AccessBits.DECLARED_FIELDS | AccessBits.DECLARED_METHODS | AccessBits.DECLARED_CONSTRUCTORS | AccessBits.RESOURCE)
-})
+}, importInfos = WebMvcHints.class)
 public class DataRestHints implements NativeImageConfiguration {
 
 }

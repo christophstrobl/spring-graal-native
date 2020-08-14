@@ -28,9 +28,7 @@ GRAALVM_VERSION=`native-image --version`
 echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
 { time native-image \
   --verbose \
-  --initialize-at-build-time=org.springframework.hateoas.MediaTypes,org.springframework.util.MimeTypeUtils \
-  -H:+RemoveSaturatedTypeFlows \
-  -H:+PrintAnalysisCallTree \
+  --initialize-at-build-time=org.springframework.hateoas.MediaTypes,org.springframework.util.MimeTypeUtils,java.awt.Toolkit,sun.instrument.InstrumentationImpl \
   -Dspring.native.remove-yaml-support=true \
   -Dspring.native.remove-jmx-support=true \
   -Dspring.native.remove-spel-support=true \
