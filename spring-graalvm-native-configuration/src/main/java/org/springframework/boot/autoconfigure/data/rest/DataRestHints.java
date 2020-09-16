@@ -37,13 +37,29 @@ import org.springframework.graalvm.type.AccessBits;
 				org.springframework.data.repository.support.Repositories.class,
 				org.springframework.data.repository.support.RepositoryInvoker.class,
 				org.springframework.data.repository.support.RepositoryInvokerFactory.class,
+
+				org.springframework.boot.autoconfigure.data.rest.SpringBootRepositoryRestConfigurer.class,
+				org.springframework.boot.autoconfigure.data.rest.RepositoryRestProperties.class,
+
 		},
 				typeNames = {
 						"org.springframework.data.rest.webmvc.config.WebMvcRepositoryRestConfiguration",
 
+						"org.atteo.evo.inflector.English",
+
 						"org.springframework.hateoas.EntityModel",
 						"org.springframework.hateoas.CollectionModel",
-						"org.springframework.hateoas.AffordanceModel"
+						"org.springframework.hateoas.AffordanceModel",
+
+						"org.springframework.plugin.core.OrderAwarePluginRegistry",
+						"org.springframework.plugin.core.Plugin",
+						"org.springframework.plugin.core.PluginRegistry",
+						"org.springframework.plugin.core.PluginRegistrySupport",
+						"org.springframework.plugin.core.SimplePluginRegistry",
+						"org.springframework.plugin.core.config.EnablePluginRegistries",
+						"org.springframework.plugin.core.config.PluginRegistriesBeanDefinitionRegistrar",
+						"org.springframework.plugin.core.support.AbstractTypeAwareSupport",
+						"org.springframework.plugin.core.support.PluginRegistryFactoryBean"
 				},
 
 				access = AccessBits.DECLARED_FIELDS | AccessBits.DECLARED_METHODS | AccessBits.DECLARED_CONSTRUCTORS | AccessBits.RESOURCE)

@@ -18,6 +18,9 @@ package org.springframework.hateoas.config;
 import org.springframework.graalvm.extension.NativeImageHint;
 import org.springframework.graalvm.extension.NativeImageConfiguration;
 import org.springframework.graalvm.extension.TypeInfo;
+import org.springframework.hateoas.AffordanceModel;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
 /*
@@ -29,7 +32,12 @@ proposedHints.put(WebStackImportSelector,
 		}));
 		*/
 @NativeImageHint(trigger=WebStackImportSelector.class,typeInfos= {
-	@TypeInfo(types= {WebMvcHateoasConfiguration.class,WebFluxHateoasConfiguration.class})	
+		@TypeInfo(types= {
+				WebMvcHateoasConfiguration.class,
+				WebFluxHateoasConfiguration.class,
+				org.springframework.hateoas.mediatype.hal.HalMediaTypeConfiguration.class,
+				org.springframework.hateoas.config.RestTemplateHateoasConfiguration.class,
+		})
 },follow=true)
 /*
 public final static String HypermediaConfigurationImportSelector = "Lorg/springframework/hateoas/config/HypermediaConfigurationImportSelector;";
@@ -43,7 +51,8 @@ public final static String HypermediaConfigurationImportSelector = "Lorg/springf
 	@TypeInfo(types= {
 		HypermediaConfigurationImportSelector.class,
 		EnableHypermediaSupport.class, HypermediaType.class, HypermediaType[].class,
-		MediaTypeConfigurationProvider.class
+			MediaTypeConfigurationProvider.class,
+			EntityModel.class, CollectionModel.class, AffordanceModel.class
 	})})
 public class HateoasHints implements NativeImageConfiguration {
 }

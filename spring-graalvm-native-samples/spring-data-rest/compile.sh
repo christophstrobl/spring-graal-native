@@ -12,7 +12,7 @@ rm -rf target
 mkdir -p target/native-image
 
 echo "Packaging $ARTIFACT with Maven"
-mvn -DskipTests=true -ntp package > target/native-image/output.txt
+mvn -DskipTests=true -Dspring.xml.ignore=false -ntp package > target/native-image/output.txt
 
 JAR="$ARTIFACT-$VERSION.jar"
 rm -f $ARTIFACT
@@ -28,7 +28,8 @@ GRAALVM_VERSION=`native-image --version`
 echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
 { time native-image \
   --verbose \
-  --initialize-at-build-time=org.springframework.hateoas.MediaTypes,org.springframework.util.MimeTypeUtils,java.awt.Toolkit,sun.instrument.InstrumentationImpl \
+  --initialize-at-build-time=org.springframework.hateoas.MediaTypes,org.springframework.util.MimeTypeUtils,java.awt.Toolkit,sun.instrument.InstrumentationImpl,org.springframework.boot.context.properties.bind.Bindable \
+  -Dspring.xml.ignore=false \
   -Dspring.native.remove-yaml-support=true \
   -Dspring.native.remove-jmx-support=true \
   -Dspring.native.remove-spel-support=true \
