@@ -28,6 +28,8 @@ import org.springframework.graalvm.type.AccessBits;
 		@TypeInfo(types = {
 				org.reactivestreams.Publisher.class,
 
+
+
 				org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver.class,
 				org.springframework.web.servlet.theme.FixedThemeResolver.class,
 				org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator.class,
@@ -43,13 +45,28 @@ import org.springframework.graalvm.type.AccessBits;
 
 		},
 				typeNames = {
+
+						"org.springframework.data.mapping.model.PersistentEntity",
+
 						"org.springframework.data.rest.webmvc.config.WebMvcRepositoryRestConfiguration",
+						"org.springframework.data.rest.webmvc.BasePathAwareController",
 
 						"org.atteo.evo.inflector.English",
 
 						"org.springframework.hateoas.EntityModel",
+						"org.springframework.hateoas.EntityModel$MapSuppressingUnwrappingSerializer",
+
 						"org.springframework.hateoas.CollectionModel",
 						"org.springframework.hateoas.AffordanceModel",
+
+						"org.springframework.boot.env.EnvironmentPostProcessorApplicationListener",
+						"org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor",
+						"org.springframework.boot.env.RandomValuePropertySourceEnvironmentPostProcessor",
+						"org.springframework.boot.context.config.ConfigTreeConfigDataLocationResolver",
+						"org.springframework.boot.context.config.ResourceConfigDataLocationResolver",
+						"org.springframework.boot.context.config.ConfigTreeConfigDataLoader",
+						"org.springframework.boot.context.config.ResourceConfigDataLoader",
+
 
 						"org.springframework.plugin.core.OrderAwarePluginRegistry",
 						"org.springframework.plugin.core.Plugin",
@@ -60,10 +77,9 @@ import org.springframework.graalvm.type.AccessBits;
 						"org.springframework.plugin.core.config.PluginRegistriesBeanDefinitionRegistrar",
 						"org.springframework.plugin.core.support.AbstractTypeAwareSupport",
 						"org.springframework.plugin.core.support.PluginRegistryFactoryBean"
-				},
+				})
 
-				access = AccessBits.DECLARED_FIELDS | AccessBits.DECLARED_METHODS | AccessBits.DECLARED_CONSTRUCTORS | AccessBits.RESOURCE)
+//				access = AccessBits.DECLARED_FIELDS | AccessBits.DECLARED_METHODS | AccessBits.DECLARED_CONSTRUCTORS | AccessBits.RESOURCE)
 }, importInfos = WebMvcHints.class)
 public class DataRestHints implements NativeImageConfiguration {
-
 }
