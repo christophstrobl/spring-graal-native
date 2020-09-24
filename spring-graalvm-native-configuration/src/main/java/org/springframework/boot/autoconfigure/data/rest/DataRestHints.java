@@ -16,10 +16,10 @@
 package org.springframework.boot.autoconfigure.data.rest;
 
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcHints;
+import org.springframework.data.rest.webmvc.config.RestControllerHints;
 import org.springframework.graalvm.extension.NativeImageConfiguration;
 import org.springframework.graalvm.extension.NativeImageHint;
 import org.springframework.graalvm.extension.TypeInfo;
-import org.springframework.graalvm.type.AccessBits;
 
 /**
  * @author Christoph Strobl
@@ -27,8 +27,6 @@ import org.springframework.graalvm.type.AccessBits;
 @NativeImageHint(trigger = RepositoryRestMvcAutoConfiguration.class, typeInfos = {
 		@TypeInfo(types = {
 				org.reactivestreams.Publisher.class,
-
-
 
 				org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver.class,
 				org.springframework.web.servlet.theme.FixedThemeResolver.class,
@@ -42,7 +40,6 @@ import org.springframework.graalvm.type.AccessBits;
 
 				org.springframework.boot.autoconfigure.data.rest.SpringBootRepositoryRestConfigurer.class,
 				org.springframework.boot.autoconfigure.data.rest.RepositoryRestProperties.class,
-
 		},
 				typeNames = {
 
@@ -67,7 +64,6 @@ import org.springframework.graalvm.type.AccessBits;
 						"org.springframework.boot.context.config.ConfigTreeConfigDataLoader",
 						"org.springframework.boot.context.config.ResourceConfigDataLoader",
 
-
 						"org.springframework.plugin.core.OrderAwarePluginRegistry",
 						"org.springframework.plugin.core.Plugin",
 						"org.springframework.plugin.core.PluginRegistry",
@@ -76,10 +72,12 @@ import org.springframework.graalvm.type.AccessBits;
 						"org.springframework.plugin.core.config.EnablePluginRegistries",
 						"org.springframework.plugin.core.config.PluginRegistriesBeanDefinitionRegistrar",
 						"org.springframework.plugin.core.support.AbstractTypeAwareSupport",
-						"org.springframework.plugin.core.support.PluginRegistryFactoryBean"
-				})
+						"org.springframework.plugin.core.support.PluginRegistryFactoryBean",
 
-//				access = AccessBits.DECLARED_FIELDS | AccessBits.DECLARED_METHODS | AccessBits.DECLARED_CONSTRUCTORS | AccessBits.RESOURCE)
-}, importInfos = WebMvcHints.class)
+						"org.springframework.boot.logging.logback.LogbackLoggingSystem$Factory"
+				})
+},
+		importInfos = {WebMvcHints.class, RestControllerHints.class})
 public class DataRestHints implements NativeImageConfiguration {
+
 }

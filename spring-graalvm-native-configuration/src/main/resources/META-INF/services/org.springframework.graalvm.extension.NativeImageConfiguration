@@ -68,6 +68,7 @@ org.springframework.context.annotation.ContextAnnotationHints
 org.springframework.core.annotation.CoreAnnotationHints
 org.springframework.data.jpa.repository.support.EntityManagerHints
 org.springframework.data.web.config.SpringDataWebHints
+org.springframework.data.rest.webmvc.config.RestControllerHints
 org.springframework.hateoas.config.HateoasHints
 org.springframework.kafka.annotation.KafkaHints
 org.springframework.scheduling.annotation.SchedulingHints
