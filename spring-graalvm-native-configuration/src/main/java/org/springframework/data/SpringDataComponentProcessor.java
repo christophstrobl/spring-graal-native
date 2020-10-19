@@ -146,6 +146,8 @@ public class SpringDataComponentProcessor implements ComponentProcessor {
 	private final SpringDataComponentLog log = SpringDataComponentLog.instance();
 	private Set<String> keysSeen = new HashSet<>();
 
+	private final boolean buildTimeDomainInfoAvailable = Boolean.valueOf(System.getProperty("spring.data.build-time-domain-info", "false"));
+
 	static {
 		try {
 			repositoryName = Repository.class.getName();
@@ -308,6 +310,11 @@ public class SpringDataComponentProcessor implements ComponentProcessor {
 
 
 	private void registerDomainType(Type domainType, NativeImageContext imageContext) {
+
+		if(buildTimeDomainInfoAvailable) {
+			log.message(String.format("Skipping domain type inspection for %s - build time info available.", domainType.getDottedName()));
+			return;
+		}
 
 		if (domainType.isPartOfDomain(SPRING_DATA_DOMAIN_NAMESPACE) || imageContext.hasReflectionConfigFor(domainType.getDottedName())) {
 			return;
