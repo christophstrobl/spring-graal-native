@@ -27,6 +27,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>2.5.0-BUILD-TIME-DOMAIN-TYPE-METADATA-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-indexer</artifactId>
         </dependency>
@@ -77,6 +82,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-entity-generator</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
