@@ -306,10 +306,33 @@ public class SpringDataComponentProcessor implements ComponentProcessor {
 		return null;
 	}
 
+	private boolean hasConfiguredTypeInformation(Type type, NativeImageContext context) {
+
+		String typeName = type.getName() + "ConfigurableTypeInformation";
+		boolean found = context.getTypeSystem().canResolve(typeName);
+
+		if (!found) {
+			return false;
+		}
+
+		// verify super type to assure we've got the right type
+		Type configuredInformation = context.getTypeSystem().resolve(typeName);
+		if (!configuredInformation.getSuperclass().getDottedName().equals("org.springframework.data.mapping.model.ConfigurableTypeInformation")) {
+			return false;
+		}
+
+		return true;
+	}
 
 	private void registerDomainType(Type domainType, NativeImageContext imageContext) {
 
 		if (domainType.isPartOfDomain(SPRING_DATA_DOMAIN_NAMESPACE) || imageContext.hasReflectionConfigFor(domainType.getDottedName())) {
+			return;
+		}
+
+		if (hasConfiguredTypeInformation(domainType, imageContext)) {
+
+			log.message(String.format("Found ConfigurableTypeInformation for %s", domainType.getDottedName()));
 			return;
 		}
 
