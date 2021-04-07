@@ -16,20 +16,36 @@
 
 package org.hsqldb;
 
+import org.hsqldb.index.Index;
+import org.hsqldb.jdbc.JDBCClob;
 import org.hsqldb.jdbc.JDBCDriver;
 import org.hsqldb.lib.FileUtil;
-
-import org.springframework.nativex.type.NativeConfiguration;
 import org.springframework.nativex.hint.NativeHint;
 import org.springframework.nativex.hint.ResourceHint;
 import org.springframework.nativex.hint.TypeHint;
+import org.springframework.nativex.type.NativeConfiguration;
 
 
 @NativeHint(trigger = JDBCDriver.class, types = {
-    @TypeHint(types = FileUtil.class, typeNames= "org.hsqldb.dbinfo.DatabaseInformationFull")
+		@TypeHint(types = {
+				FileUtil.class,
+				Constraint.class,
+				Expression.class,
+				RangeGroup.class,
+				Routine.class,
+				Index.class,
+				JDBCClob.class,
+		}, typeNames = {
+				"org.hsqldb.dbinfo.DatabaseInformationFull",
+				"org.hsqldb.persist.HsqlDatabaseProperties",
+				"org.hsqldb.HsqlNameManager$HsqlName",
+
+
+		})
 }, resources = {
-    @ResourceHint(patterns = {"org/hsqldb/resources/information-schema.sql", "org/hsqldb/resources/lob-schema.sql", "org/hsqldb/resources/jdklogging-default.properties"}),
-    @ResourceHint(isBundle = true, patterns = "org.hsqldb.resources.sql-state-messages")
+		@ResourceHint(patterns = {"org/hsqldb/resources/information-schema.sql", "org/hsqldb/resources/lob-schema.sql", "org/hsqldb/resources/jdklogging-default.properties"}),
+		@ResourceHint(isBundle = true, patterns = "org.hsqldb.resources.sql-state-messages")
 })
 public class HSQLDBHints implements NativeConfiguration {
+
 }

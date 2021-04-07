@@ -26,9 +26,21 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.LinkRelation;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.PagedModel.PageMetadata;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
+import org.springframework.hateoas.server.EntityLinks;
+import org.springframework.hateoas.server.ExposesResourceFor;
+import org.springframework.hateoas.server.LinkBuilderFactory;
+import org.springframework.hateoas.server.MethodLinkBuilderFactory;
+import org.springframework.hateoas.server.RepresentationModelAssembler;
+import org.springframework.hateoas.server.core.AbstractEntityLinks;
+import org.springframework.hateoas.server.core.ControllerEntityLinks;
+import org.springframework.hateoas.server.core.DefaultLinkRelationProvider;
+import org.springframework.hateoas.server.core.EvoInflectorLinkRelationProvider;
+import org.springframework.hateoas.server.core.LastInvocationAware;
 import org.springframework.hateoas.server.core.Relation;
+import org.springframework.hateoas.server.mvc.UriComponentsContributor;
 import org.springframework.nativex.hint.AccessBits;
 import org.springframework.nativex.hint.FieldHint;
 import org.springframework.nativex.hint.NativeHint;
@@ -60,35 +72,53 @@ import org.springframework.nativex.type.NativeConfiguration;
 
 						Relation.class,
 
+						AbstractEntityLinks.class,
+						ControllerEntityLinks.class,
 						Link.class,
 						LinkRelation.class,
+						LinkBuilderFactory.class,
+						MethodLinkBuilderFactory.class,
+						RepresentationModelAssembler.class,
 						Affordance.class,
 						AffordanceModel.class,
+						DefaultLinkRelationProvider.class,
+						EvoInflectorLinkRelationProvider.class, // TODO: trigger on evo lib
 
 						EntityModel.class,
+						EntityLinks.class,
 						PagedModel.class,
+						PageMetadata.class,
 						RepresentationModel.class,
 
 						RestTemplateHateoasConfiguration.class,
+						UriComponentsContributor.class,
 				},
 						typeNames = {
 
 								"org.springframework.hateoas.StringLinkRelation",
 								"org.springframework.hateoas.EntityModel$MapSuppressingUnwrappingSerializer",
 
+								"org.springframework.hateoas.mediatype.MessageSourceResolver",
+
 								// HAL
+								"org.springframework.hateoas.mediatype.hal.DefaultCurieProvider",
+								"org.springframework.hateoas.mediatype.hal.DefaultCurieProvider$Curie",
 								"org.springframework.hateoas.mediatype.hal.HalConfiguration",
 								"org.springframework.hateoas.mediatype.hal.Jackson2HalModule",
 								"org.springframework.hateoas.mediatype.hal.LinkMixin",
 								"org.springframework.hateoas.mediatype.hal.RepresentationModelMixin",
 								"org.springframework.hateoas.mediatype.hal.CollectionModelMixin",
 								"org.springframework.hateoas.mediatype.hal.HalLinkRelation",
+								"org.springframework.hateoas.mediatype.hal.HalLinkDiscoverer",
+								"org.springframework.hateoas.mediatype.hal.forms.HalFormsLinkDiscoverer",
 								"org.springframework.hateoas.mediatype.hal.Jackson2HalModule$HalLink",
 								"org.springframework.hateoas.mediatype.hal.Jackson2HalModule$HalLinkListSerializer",
 								"org.springframework.hateoas.mediatype.hal.Jackson2HalModule$HalLinkListDeserializer",
 								"org.springframework.hateoas.mediatype.hal.Jackson2HalModule$TrueOnlyBooleanSerializer",
 								"org.springframework.hateoas.mediatype.hal.Jackson2HalModule$EmbeddedMapper",
-								"org.springframework.hateoas.mediatype.hal.forms.HalFormsMediaTypeConfiguration"
+								"org.springframework.hateoas.mediatype.hal.forms.HalFormsMediaTypeConfiguration",
+								"org.springframework.hateoas.mediatype.hal.forms.Jackson2HalFormsModule$RepresentationModelMixin",
+
 
 								// TODO: ALPS
 
@@ -101,6 +131,13 @@ import org.springframework.nativex.type.NativeConfiguration;
 				@TypeHint(
 						types = CollectionModel.class,
 						fields = @FieldHint(name = "content", allowUnsafeAccess = true, allowWrite = true)
+				),
+				@TypeHint(
+						types = {
+								ExposesResourceFor.class,
+								LastInvocationAware.class,
+						},
+						access = AccessBits.DECLARED_METHODS
 				)
 		},
 		imports = {

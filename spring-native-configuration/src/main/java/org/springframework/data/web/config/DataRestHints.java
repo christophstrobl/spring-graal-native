@@ -121,4 +121,6 @@ public class DataRestHints implements NativeConfiguration {
 
 	// TODO: inspect RepositoryRestResource for excerpt projections and register proxy
 	//  <excerpt projection interface name>, org.springframework.data.projection.TargetAware, org.springframework.aop.SpringProxy, org.springframework.core.DecoratingProxy
+
+	// TODO: substitution for search controller to add @PathVariable with explicit name
 }

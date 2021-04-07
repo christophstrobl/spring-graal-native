@@ -17,6 +17,7 @@
 package org.springframework.nativex.domain.reflect;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -118,7 +119,7 @@ public final class ClassDescriptor {
 	}
 
 	public List<FieldDescriptor> getFields() {
-		return this.fields;
+		return this.fields != null ? this.fields : Collections.emptyList();
 	}
 
 	public List<MethodDescriptor> getMethods() {

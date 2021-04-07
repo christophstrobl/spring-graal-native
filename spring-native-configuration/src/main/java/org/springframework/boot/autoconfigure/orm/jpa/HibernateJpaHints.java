@@ -120,13 +120,30 @@ import java.util.EventListener;
 						EntityManagerMessageLogger.class, // CoreMessageLogger.class,
 						Session.class, EventListener.class,
 
-						EnumType.class
+						EnumType.class,
+						InheritanceType.class,
 				}, typeNames = {
 						"org.hibernate.internal.EntityManagerMessageLogger_$logger",
 						"org.hibernate.service.jta.platform.internal.NoJtaPlatform",
 						"org.hibernate.annotations.common.util.impl.Log_$logger",
 						"org.hibernate.annotations.common.util.impl.Log",
 				}),
+
+
+				@TypeHint(types = { // spring-restbucks
+						Convert.class,
+						EmbeddedId.class,
+						Index.class,
+						OrderColumn.class,
+						PersistenceProperty.class,
+						PostLoad.class,
+						PrePersist.class,
+						UniqueConstraint.class,
+						Version.class,
+				}, access = AccessBits.DECLARED_METHODS),
+
+
+
 				@TypeHint(types = DataSourceInitializedPublisher.class, access = AccessBits.LOAD_AND_CONSTRUCT | AccessBits.DECLARED_FIELDS),
 				@TypeHint(types = {org.hibernate.internal.CoreMessageLogger_$logger.class,
 						// These from EntityTuplizerFactory

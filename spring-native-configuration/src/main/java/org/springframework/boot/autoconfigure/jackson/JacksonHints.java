@@ -34,6 +34,11 @@ import org.springframework.nativex.type.NativeConfiguration;
 
 @NativeHint(trigger = JacksonAutoConfiguration.class, types = {
 		@TypeHint(types = {
+
+				JacksonAnnotation.class,
+				JsonAutoDetect.class,
+
+
 				JsonPropertyOrder.class, JsonCreator.class,
 				JsonDeserialize.class, JsonProperty.class,
 				JsonGetter.class, JsonSetter.class,
