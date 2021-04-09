@@ -15,6 +15,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<main.class>app.main.SampleApplication</main.class>
+		<native.build.args>--initialize-at-build-time=sun.instrument.InstrumentationImpl</native.build.args>
 	</properties>
 
 	<dependencies>
