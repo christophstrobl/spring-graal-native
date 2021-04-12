@@ -28,13 +28,21 @@ import java.util.List;
 public class Order {
 
 	@GeneratedValue
-	Long id; // simple value
+	private final Long id; // simple value
 
 	@SomeAnnotation // annotation with meta annotation @Nullable
 	String name;
 
 	@OneToMany // javax.persistence annotation
 	List<LineItem> itemList; // List and element type with
+
+	public Order() {
+		this(null);
+	}
+
+	public Order(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -43,8 +51,7 @@ public class Order {
 	public List<LineItem> getItemList() {
 		return itemList;
 	}
-
-
+	
 	public Date getOrderDate() { // capture method return type
 		return null;
 	}

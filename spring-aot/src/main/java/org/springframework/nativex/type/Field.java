@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.signature.SignatureReader;
 import org.objectweb.asm.tree.AnnotationNode;
 import org.objectweb.asm.tree.FieldNode;
@@ -64,7 +65,14 @@ public class Field {
 		}
 		return results == null ? Collections.emptyList() : results;
 	}
-	
+
+	/**
+	 * @return {@literal true} if considered a final field (ACC_FINAL || LDC).
+	 */
+	public boolean isFinal() {
+		return Opcodes.ACC_FINAL == node.access || Opcodes.LDC == node.access;
+	}
+
 	public Set<String> getTypesInSignature() {
 		if (node.signature == null) {
 			String s = node.desc;
@@ -88,6 +96,4 @@ public class Field {
 	public String getName() {
 		return node.name;
 	}
-
-	
 }

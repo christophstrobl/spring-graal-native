@@ -15,10 +15,15 @@
  */
 package org.springframework.data;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.nativex.domain.reflect.FieldDescriptor;
 import org.springframework.nativex.hint.AccessBits;
+import org.springframework.nativex.type.AccessDescriptor;
 import org.springframework.nativex.type.ComponentProcessor;
+import org.springframework.nativex.type.Field;
 import org.springframework.nativex.type.NativeContext;
 import org.springframework.nativex.type.Type;
 
@@ -30,9 +35,9 @@ public class JpaComponentProcessor implements ComponentProcessor {
 	private final DomainTypeProcessor domainTypeProcessor = new DomainTypeProcessor(
 
 			(type, nativeContext) -> {
-				if (nativeContext.hasReflectionConfigFor(type)) {
-					return false;
-				}
+//				if (nativeContext.hasReflectionConfigFor(type)) {
+//					return false;
+//				}
 				return true;
 			},
 			this::registerTypeInConfiguration,
@@ -43,12 +48,15 @@ public class JpaComponentProcessor implements ComponentProcessor {
 	@Override
 	public boolean handle(NativeContext imageContext, String componentType, List<String> classifiers) {
 
+		if (classifiers.contains("javax.persistence.Entity")) {
+			return true;
+		}
+
 		Type type = imageContext.getTypeSystem().resolveName(componentType);
 
 		return type.getAnnotations() //
 				.stream() //
-				.filter(it -> it.getDottedName().contains("javax.persistence"))
-				.count() > 0;
+				.anyMatch(it -> it.getDottedName().contains("javax.persistence"));
 	}
 
 	@Override
@@ -64,8 +72,20 @@ public class JpaComponentProcessor implements ComponentProcessor {
 
 	private void registerTypeInConfiguration(Type type, NativeContext context) {
 
-		// TODO: be explicit here - eg. enums, final fields, ...
+		AccessDescriptor accessDescriptor = new AccessDescriptor(AccessBits.FULL_REFLECTION, Collections.emptyList(), fieldDescriptorsForType(type));
+		context.addReflectiveAccess(type.getDottedName(), accessDescriptor);
+	}
 
-		context.addReflectiveAccess(type.getDottedName(), AccessBits.FULL_REFLECTION);
+	private List<FieldDescriptor> fieldDescriptorsForType(Type type) {
+
+		if (type.isPartOfDomain("java.")) { // other well known domains ?
+			return Collections.emptyList();
+		}
+
+		return type.getFields()
+				.stream()
+				.filter(Field::isFinal)
+				.map(field -> new FieldDescriptor(field.getName(), true, true))
+				.collect(Collectors.toList());
 	}
 }
